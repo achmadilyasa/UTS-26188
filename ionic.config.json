@@ -1,0 +1,7 @@
+{
+  "name": "uts26188",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

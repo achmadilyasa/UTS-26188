@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{loadedItem.model}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-img [src]="loadedItem.imageUrl"></ion-img>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-list class="ion-padding">
+          <ion-label>
+            <h1>{{loadedItem.model}}</h1>
+            <ion-text color="primary">
+              <h2><b>Rp. {{this.itemsService.convertToCurrency(loadedItem.price)}}</b></h2>
+            </ion-text>
+            <p>Tersedia: {{loadedItem.stock}}</p>
+          </ion-label>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-list class="ion-padding">
+          <ion-label *ngIf="loadedItem.type === 'cpu'">
+            <h1>Detail Produk</h1>
+            <p>Brand: {{loadedCpu.brand}}</p>
+            <p>Type: {{loadedCpu.type}}</p>
+            <p>Base Clock: {{loadedCpu.baseClock}}GHz</p>
+            <p>Boost Clock: Up to {{loadedCpu.boostClock}}GHz</p>
+            <p>Core Count: {{loadedCpu.coreCount}}</p>
+            <p>Thread Count: {{loadedCpu.threadCount}}</p>
+          </ion-label>
+          <ion-label *ngIf="loadedItem.type === 'gpu'">
+            <h1>Detail Produk</h1>
+            <p>Brand: {{loadedGpu.brand}}</p>
+            <p>Type: {{loadedGpu.type}}</p>
+            <p>Memory Speed: {{loadedGpu.speed}} Gbps</p>
+            <p>Standard Memory Config: {{loadedGpu.memory}}GB</p>
+          </ion-label>
+          <ion-label *ngIf="loadedItem.type === 'ram'">
+            <h1>Detail Produk</h1>
+            <p>Brand: {{loadedRam.brand}}</p>
+            <p>Type: {{loadedRam.type}}</p>
+            <p>Memory: {{loadedRam.size}}GB</p>
+            <p>Data Transfer: {{loadedRam.speed}} MB/s</p>
+            <p>Pieces: {{loadedRam.piece}}</p>
+          </ion-label>
+          <ion-label *ngIf="loadedItem.type === 'motherboard'">
+            <h1>Detail Produk</h1>
+            <p>Brand: {{loadedMobo.brand}}</p>
+            <p>Type: {{loadedMobo.type}}</p>
+            <p>Socket: {{loadedMobo.socket}}</p>
+            <p>Chipset: {{loadedMobo.chipset}}</p>
+          </ion-label>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

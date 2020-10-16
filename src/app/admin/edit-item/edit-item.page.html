@@ -1,0 +1,175 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/admin"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Edit Produk</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+    <ion-list>
+      <ion-item>
+        <ion-label position="stacked">Image URL</ion-label>
+        <ion-textarea type="url"
+                      ngModel
+                      name="imageUrl"
+                      #imageCtrl="ngModel"
+                      required
+                      [(ngModel)]="loadedItem.imageUrl"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Brand</ion-label>
+        <ion-input type="text"
+                   ngModel
+                   name="brand"
+                   #brandCtrl="ngModel"
+                   required
+                   [(ngModel)]="loadedItem.brand"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Model</ion-label>
+        <ion-input type="text"
+                   ngModel
+                   name="model"
+                   #modelCtrl="ngModel"
+                   required
+                   [(ngModel)]="loadedItem.model"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Price</ion-label>
+        <ion-input type="number"
+                   ngModel
+                   name="price"
+                   #hargaCtrl="ngModel"
+                   required
+                   [(ngModel)]="loadedItem.price"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Stock</ion-label>
+        <ion-input type="number"
+                   ngModel
+                   name="stock"
+                   #stokCtrl="ngModel"
+                   required
+                   [(ngModel)]="loadedItem.stock"></ion-input>
+      </ion-item>
+      <!--CPU-->
+      <div *ngIf="loadedItem.type === 'cpu'">
+        <ion-item>
+          <ion-label position="floating">BaseClock</ion-label>
+          <ion-input type="number"
+                     ngModel
+                     name="baseClock"
+                     #baseCtrl="ngModel"
+                     required
+                     [(ngModel)]="loadedCpu.baseClock"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">BoostClock</ion-label>
+          <ion-input type="number"
+                     ngModel
+                     name="boostClock"
+                     #boostCtrl="ngModel"
+                     required
+                     [(ngModel)]="loadedCpu.boostClock"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Core</ion-label>
+          <ion-input type="number"
+                     ngModel
+                     name="coreCount"
+                     #coreCtrl="ngModel"
+                     required
+                     [(ngModel)]="loadedCpu.coreCount"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Thread</ion-label>
+          <ion-input type="number"
+                     ngModel
+                     name="threadCount"
+                     #threadCtrl="ngModel"
+                     [(ngModel)]="loadedCpu.baseClock"></ion-input>
+        </ion-item>
+      </div>
+
+      <!--RAM-->
+      <div *ngIf="loadedItem.type === 'ram'">
+        <ion-item>
+          <ion-label position="floating">Memory</ion-label>
+          <ion-input type="number"
+                     ngModel
+                     name="size"
+                     #sizeCtrl="ngModel"
+                     required
+                     [(ngModel)]="loadedRam.size"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Data Transfer</ion-label>
+          <ion-input type="number"
+                     ngModel
+                     name="speed"
+                     #speedCtrl="ngModel"
+                     required
+                     [(ngModel)]="loadedRam.speed"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Pieces</ion-label>
+          <ion-input type="number"
+                     ngModel
+                     name="piece"
+                     #pieceCtrl="ngModel"
+                     required
+                     [(ngModel)]="loadedRam.piece"></ion-input>
+        </ion-item>
+      </div>
+
+      <!--GPU-->
+      <div *ngIf="loadedItem.type === 'gpu'">
+        <ion-item>
+          <ion-label position="floating">Standard Memory</ion-label>
+          <ion-input type="number"
+                     ngModel
+                     name="memory"
+                     #memoryCtrl="ngModel"
+                     required
+                     [(ngModel)]="loadedGpu.memory"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Memory Speed</ion-label>
+          <ion-input type="number"
+                     ngModel
+                     name="speed"
+                     #speedCtrl="ngModel"
+                     required
+                     [(ngModel)]="loadedGpu.speed"></ion-input>
+        </ion-item>
+      </div>
+
+      <!--MotherBoard-->
+      <div *ngIf="loadedItem.type === 'motherboard'">
+        <ion-item>
+          <ion-label position="floating">Chipset</ion-label>
+          <ion-input type="text"
+                     ngModel
+                     name="chipset"
+                     #chipsetCtrl="ngModel"
+                     required
+                     [(ngModel)]="loadedMobo.chipset"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Socket</ion-label>
+          <ion-input type="text"
+                     ngModel
+                     name="socket"
+                     #socketCtrl="ngModel"
+                     required
+                     [(ngModel)]="loadedMobo.socket"></ion-input>
+        </ion-item>
+      </div>
+
+    </ion-list>
+    <ion-button expand="full" type="submit" color="primary" [disabled]="!form.valid">Save Item</ion-button>
+  </form>
+</ion-content>

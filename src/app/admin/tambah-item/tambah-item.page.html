@@ -1,0 +1,248 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/admin"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Tambah Produk</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+    <ion-list>
+      <ion-item>
+        <ion-label position="stacked">Image URL</ion-label>
+        <ion-textarea type="url"
+                      ngModel
+                      name="imageUrl"
+                      #imageCtrl="ngModel"
+                      required
+                      placeholder="https://"></ion-textarea>
+      </ion-item>
+      <ion-item *ngIf="!imageCtrl.valid && imageCtrl.touched">
+        <ion-icon color="danger" name="alert-circle-outline"></ion-icon>
+        <ion-text color="danger">Image URL harus diisi.</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Type</ion-label>
+        <ion-select type="text"
+                    ngModel
+                    name="type"
+                    #typeCtrl="ngModel"
+                    required>
+          <ion-select-option value="cpu">CPU</ion-select-option>
+          <ion-select-option value="ram">RAM</ion-select-option>
+          <ion-select-option value="gpu">GPU</ion-select-option>
+          <ion-select-option value="mobo">Motherboard</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Brand</ion-label>
+        <ion-input type="text"
+                   ngModel
+                   name="brand"
+                   #brandCtrl="ngModel"
+                   required
+                   ></ion-input>
+      </ion-item>
+      <ion-item *ngIf="!brandCtrl.valid && brandCtrl.touched">
+      <ion-icon color="danger" name="alert-circle-outline"></ion-icon>
+      <ion-text color="danger">Brand harus diisi.</ion-text>
+    </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Model</ion-label>
+        <ion-input type="text"
+                   ngModel
+                   name="model"
+                   #modelCtrl="ngModel"
+                   required
+                   ></ion-input>
+      </ion-item>
+      <ion-item *ngIf="!modelCtrl.valid && modelCtrl.touched">
+        <ion-icon color="danger" name="alert-circle-outline"></ion-icon>
+        <ion-text color="danger">Model harus diisi.</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Price</ion-label>
+        <ion-input type="number"
+                   ngModel
+                   name="price"
+                   #hargaCtrl="ngModel"
+                   required
+                   placeholder="Rp. "></ion-input>
+      </ion-item>
+      <ion-item *ngIf="!hargaCtrl.valid && hargaCtrl.touched">
+        <ion-icon color="danger" name="alert-circle-outline"></ion-icon>
+        <ion-text color="danger">Price harus diisi.</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Stock</ion-label>
+        <ion-input type="number"
+                   ngModel
+                   name="stock"
+                   #stokCtrl="ngModel"
+                   required
+                   placeholder="/pcs"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="!stokCtrl.valid && stokCtrl.touched">
+        <ion-icon color="danger" name="alert-circle-outline"></ion-icon>
+        <ion-text color="danger">Stock harus diisi.</ion-text>
+      </ion-item>
+      <!--CPU-->
+      <div *ngIf="form.value.type === 'cpu'">
+        <ion-item>
+          <ion-label position="stacked">BaseClock</ion-label>
+          <ion-input type="number"
+                     ngModel
+                     name="baseClock"
+                     #baseCtrl="ngModel"
+                     required
+                     placeholder="Ghz"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="!baseCtrl.valid && baseCtrl.touched">
+          <ion-icon color="danger" name="alert-circle-outline"></ion-icon>
+          <ion-text color="danger">BaseClock harus diisi.</ion-text>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">BoostClock</ion-label>
+          <ion-input type="number"
+                     ngModel
+                     name="boostClock"
+                     #boostCtrl="ngModel"
+                     required
+                     placeholder="Ghz"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="!boostCtrl.valid && boostCtrl.touched">
+          <ion-icon color="danger" name="alert-circle-outline"></ion-icon>
+          <ion-text color="danger">BoostClock harus diisi.</ion-text>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Core</ion-label>
+          <ion-input type="number"
+                     ngModel
+                     name="coreCount"
+                     #coreCtrl="ngModel"
+                     required></ion-input>
+        </ion-item>
+        <ion-item *ngIf="!coreCtrl.valid && coreCtrl.touched">
+          <ion-icon color="danger" name="alert-circle-outline"></ion-icon>
+          <ion-text color="danger">Core harus diisi.</ion-text>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Thread</ion-label>
+          <ion-input type="number"
+                     ngModel
+                     name="threadCount"
+                     #threadCtrl="ngModel"
+                     required></ion-input>
+        </ion-item>
+        <ion-item *ngIf="!threadCtrl.valid && threadCtrl.touched">
+          <ion-icon color="danger" name="alert-circle-outline"></ion-icon>
+          <ion-text color="danger">Stock harus diisi.</ion-text>
+        </ion-item>
+      </div>
+
+      <!--RAM-->
+      <div *ngIf="form.value.type === 'ram'">
+        <ion-item>
+          <ion-label position="stacked">Memory</ion-label>
+          <ion-input type="number"
+                     ngModel
+                     name="size"
+                     #sizeCtrl="ngModel"
+                     required
+                     placeholder="GB"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="!sizeCtrl.valid && sizeCtrl.touched">
+          <ion-icon color="danger" name="alert-circle-outline"></ion-icon>
+          <ion-text color="danger">Memory harus diisi.</ion-text>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Data Transfer</ion-label>
+          <ion-input type="number"
+                     ngModel
+                     name="speed"
+                     #speedCtrl="ngModel"
+                     required
+                     placeholder="MB/s"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="!speedCtrl.valid && speedCtrl.touched">
+          <ion-icon color="danger" name="alert-circle-outline"></ion-icon>
+          <ion-text color="danger">Data Transfer harus diisi.</ion-text>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Pieces</ion-label>
+          <ion-input type="number"
+                     ngModel
+                     name="piece"
+                     #pieceCtrl="ngModel"
+                     required
+                    placeholder="/pcs"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="!pieceCtrl.valid && pieceCtrl.touched">
+          <ion-icon color="danger" name="alert-circle-outline"></ion-icon>
+          <ion-text color="danger">Piece harus diisi.</ion-text>
+        </ion-item>
+      </div>
+
+      <!--GPU-->
+      <div *ngIf="form.value.type === 'gpu'">
+        <ion-item>
+          <ion-label position="floating">Standard Memory</ion-label>
+          <ion-input type="number"
+                     ngModel
+                     name="memory"
+                     #memoryCtrl="ngModel"
+                     required
+                    placeholder="GB"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="!memoryCtrl.valid && memoryCtrl.touched">
+          <ion-icon color="danger" name="alert-circle-outline"></ion-icon>
+          <ion-text color="danger">Standard Memory harus diisi.</ion-text>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Memory Speed</ion-label>
+          <ion-input type="number"
+                     ngModel
+                     name="speed"
+                     #speedCtrl="ngModel"
+                     required placeholder="Gbps"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="!speedCtrl.valid && speedCtrl.touched">
+          <ion-icon color="danger" name="alert-circle-outline"></ion-icon>
+          <ion-text color="danger">Memory Speed harus diisi.</ion-text>
+        </ion-item>
+      </div>
+
+      <!--MotherBoard-->
+      <div *ngIf="form.value.type === 'mobo'">
+        <ion-item>
+          <ion-label position="stacked">Chipset</ion-label>
+          <ion-input type="text"
+                     ngModel
+                     name="chipset"
+                     #chipsetCtrl="ngModel"
+                     required></ion-input>
+        </ion-item>
+        <ion-item *ngIf="!chipsetCtrl.valid && chipsetCtrl.touched">
+          <ion-icon color="danger" name="alert-circle-outline"></ion-icon>
+          <ion-text color="danger">Chipset harus diisi.</ion-text>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Socket</ion-label>
+          <ion-input type="text"
+                     ngModel
+                     name="socket"
+                     #socketCtrl="ngModel"
+                     required></ion-input>
+        </ion-item>
+        <ion-item *ngIf="!socketCtrl.valid && socketCtrl.touched">
+          <ion-icon color="danger" name="alert-circle-outline"></ion-icon>
+          <ion-text color="danger">Socket harus diisi.</ion-text>
+        </ion-item>
+      </div>
+
+    </ion-list>
+    <ion-button expand="full" type="submit" color="primary" [disabled]="!form.valid">Save Item</ion-button>
+  </form>
+</ion-content>
